@@ -1,0 +1,605 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+
+    scrollbar-color: dark;
+    scrollbar-width: thin;
+}
+
+body { 
+    min-height: 100vh;
+    background-image: linear-gradient(-45deg, #e3ddd9 50%, #36221c 50%);
+    font-family: 'Raleway', sans-serif;
+}
+
+.titulo {
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.subtitulo {
+    margin: 0;
+    color: #000;
+    display: inline;
+    font-size: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.sabor { 
+    color: #fff;
+    margin: 7px 0;
+    font-size: 50px;
+    font-weight: 600;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
+    font-family: 'Dancing Script', cursive;
+    margin-top: 0;
+}
+
+.linea-division {
+    width: 80%;
+    height: 2px;
+    background-color: #36221c;
+}
+
+/* ------------------------- */
+/* Estilos de Materialize */
+/* ------------------------- */
+.carousel {
+    min-height: 500px;
+}
+
+.carousel .carousel-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    width: 500px;
+    height: 500px;
+}
+
+.carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 15px;
+}
+
+.carousel .indicators .indicator-item {
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin: 0 15px;
+    background: #36221c;
+}
+
+/* ------------------------- */
+/* Estilos Flip Card */
+/* ------------------------- */
+
+.carousel .carousel-item.active.flip figure{
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.carousel .carousel-item.active.flip figure img {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+}
+
+figure{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    transition: all ease .5s;
+    transform-style: preserve-3d;
+    transform: perspective(600px) rotateY(0deg);
+}
+
+figure .front-face,
+figure .back-face {
+    width: 100%;
+    height: 100%;
+    transition: all ease .5s;
+}
+
+figure .front-face {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+figure .back-face {
+    position:absolute;
+    top: 0;
+    padding: 20px;
+    color: #000;
+    transform: perspective(600px) rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    overflow: auto;
+
+    border-radius: 15px;
+}
+
+figure .back-face .ingredientes {
+    height: 100%;
+    padding: 10px 20px;
+    overflow: auto;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffefba;
+    background: linear-gradient(to bottom, #ffefba, #ffffff);
+}
+
+figure .back-face .ingredientes h2,
+figure .back-face .ingredientes h4 span {
+    color: #fff;
+    margin: 7px 0;
+    font-size: 50px;
+    font-weight: 600;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
+    font-family: 'Dancing Script', cursive;
+    margin-top: 0;
+    text-transform: capitalize;
+}
+figure .back-face .ingredientes h4 {
+    margin: 0 0 20px 0;
+    color: #000;
+    display: inline;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+    align-self: flex-end;
+}
+figure .back-face .ingredientes h4 span {
+    font-size: 28px;
+}
+
+figure .back-face .ingredientes .linea-division {
+    width: 90%;
+    align-self: center;
+    margin: 20px 0;
+    min-height: 2px;
+}
+
+figure .back-face .ingredientes ul {
+    margin: 0 30px;
+    font-size: 20px;
+    font-weight: 500;
+    list-style: none;
+}
+figure .back-face .ingredientes ul li::before {
+    content: "\1F4CC";
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+figure .back-face .ingredientes ul li{
+    line-height: 2em;
+    word-wrap: break-word;
+    
+    display: flex;
+}
+figure .back-face .ingredientes ul li span:nth-child(2),
+.popup .ingredientes ul li span:nth-child(2) {
+    margin-left: auto;
+}
+
+a {
+    text-decoration: none;
+}
+figure .back-face .ingredientes a {
+    align-self: flex-end;
+    padding: 20px 5px 10px;
+    color: #000;
+    display: inline;
+    font-size: 25px;
+    font-weight: 500;
+}
+figure .back-face .ingredientes a:hover {
+    text-decoration: underline;
+}
+figure .back-face .ingredientes a::after {
+    content: "\1F4DD";
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+
+
+/* ------------------------------ */
+/* Estilos PopUp Animado - Receta */
+/* ------------------------------ */
+.overlay {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	visibility: hidden;
+}
+.overlay.active {
+	visibility: visible;
+}
+
+.overlay .btn-cerrar-popup {
+    background: none;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 18px;
+    opacity: 0;
+    z-index: 100;
+    color: #36221c;
+}
+.overlay .btn-cerrar-popup::after {
+    content: "\2716";
+    display: inline-block;
+}
+
+.popup {
+    background: #36221c;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	padding: 20px;
+    width: 650px;
+    height: 400px;
+    position: relative;
+	
+	transition: .3s ease all;
+	transform: scale(0.7);
+    opacity: 0;
+    
+    display: flex;
+}
+
+.popup .recetas {
+    background: #e3ddd9;
+    width: 62%;
+    overflow: auto;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+}
+.popup .linea-vertical {
+    background: #e3ddd9;
+    width: 10px;
+    padding: 20px 0;
+    opacity: 0;
+}
+.popup .linea-vertical span {
+    content: "";
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    border-right: 1px solid #36221c;
+    border-left: 1px solid #36221c;
+}
+.popup .ingredientes {
+    background: #e3ddd9;
+    flex: 1;
+    overflow: auto;
+    padding: 15px 0;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.popup h2,
+.popup h4 span {
+    color: #fff;
+    margin: 7px 0;
+    font-size: 35px;
+    font-weight: 600;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
+    font-family: 'Dancing Script', cursive;
+    margin-top: 0;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+.popup h4 {
+    color: #000;
+    margin: 0;
+    display: inline;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+    align-self: flex-end;
+}
+.popup h4 span {
+    font-size: 1em;
+}
+
+.popup .linea-division {
+    width: 90%;
+    align-self: center;
+    margin: 10px 0;
+    min-height: 2px;
+}
+
+.popup p {
+    text-align: justify;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.popup .ingredientes img {
+    height: 40%;
+    min-height: 40%;
+    align-self: center;
+    opacity: 0;
+}
+.popup .ingredientes h2{
+    font-size: 20px;
+}
+.popup ul {
+    margin:5px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    list-style: none;
+}
+.popup ul li::before {
+    content: "\1F4CC";
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+.popup ul li{
+    line-height: 1.6em;
+    word-wrap: break-word;
+
+    display: flex;
+}
+
+/* ****************************** */
+/* Footer */
+/* ****************************** */
+.created {
+    text-align: center;
+    font-size: 18px;
+    color: #3b859d;
+}
+
+.created a { color: #36221c; }
+.created a:hover { text-decoration: underline; }
+
+/* ****************************** */
+/* ScrollBar */
+/* ****************************** */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* .recetas {
+    scrollbar-color: dark;
+    scrollbar-width: thin;
+} */
+
+/* ------------------------- */
+/* ANIMACIONES */
+/* ------------------------- */
+.popup.active {	transform: scale(1); opacity: 1; }
+.popup.active .recetas { -webkit-animation: entradaReceta .8s ease .6s forwards; animation: entradaReceta .8s ease .6s forwards; }
+.popup.active img { -webkit-animation: entradaImg .8s ease 1.2s forwards; animation: entradaImg .8s ease 1.2s forwards; }
+
+.popup.active .ingredientes,
+.popup.active .linea-vertical,
+.popup.active .btn-cerrar-popup { 
+    -webkit-animation: entradaIngredientes .8s ease .6s forwards; 
+            animation: entradaIngredientes .8s ease .6s forwards; 
+}
+
+@-webkit-keyframes entradaReceta {
+	from {
+		opacity: 0;
+		transform: translateX(-25px);
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes entradaReceta {
+	from {
+		opacity: 0;
+		transform: translateX(-25px);
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes entradaImg {
+	from {
+		opacity: 0;
+		transform: translateY(-25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes entradaImg {
+	from {
+		opacity: 0;
+		transform: translateY(-25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes entradaIngredientes {
+	from {
+		opacity: 0;
+		transform: translateY(25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes entradaIngredientes {
+	from {
+		opacity: 0;
+		transform: translateY(25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+
+/* ****************************** */
+/* Media Queries */
+/* ****************************** */
+@media screen and (max-width: 700px) {
+    .carousel {
+        min-height: 400px;
+    }
+    .carousel .carousel-item {
+        width: 400px;
+        height: 400px;
+    }
+
+    figure .back-face {
+        padding: 10px;
+    }
+    figure .back-face .ingredientes h2{
+        font-size: 30px;
+    }
+    figure .back-face .ingredientes .linea-division {
+        min-height: 2px;
+        margin: 10px 0;
+    }
+    figure .back-face .ingredientes h4 {
+        margin: 0 0 5px 0;
+        font-size: 15px;
+    }
+    figure .back-face .ingredientes h4 span {
+        font-size: 20px;
+    }
+    figure .back-face .ingredientes ul {
+        font-size: 14px;
+        flex: 1;
+    }
+    figure .back-face .ingredientes ul li {
+        line-height: 1.7em;
+    }
+    figure .back-face .ingredientes a {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 648px){
+    .popup {
+        width: 90%;
+    }
+    .popup .recetas {
+        width: 100%;
+    }
+    .popup h4 {
+        margin: 8px 0 0 0;
+    }
+
+    .popup .linea-vertical,
+    .popup .ingredientes {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 464px) {
+    .carousel .carousel-item {
+        width: 315px;
+        height: 300px;
+    }
+
+    .titulo{
+        margin-bottom: 20px;
+    }
+
+    figure .back-face .ingredientes {
+        padding: 10px;
+    }
+    figure .back-face .ingredientes .linea-division{
+        margin: 5px 0;
+    }
+    figure .back-face .ingredientes ul {
+        font-size: 12px;
+    }
+    figure .back-face .ingredientes ul {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .titulo{
+        font-size: 32px;
+    }
+
+    figure .back-face {
+        padding: 0;
+    }
+    figure .back-face .ingredientes h2 {
+        margin-left: 20px;
+    }
+    figure .back-face .ingredientes h4 span {
+        margin-right: 25px;
+    }
+    figure .back-face .ingredientes a {
+        margin-right: 25px;
+    }
+
+    .created {
+        font-size: 15px;
+    }
+}
