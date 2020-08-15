@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://cravings.netlify.app" aria-hidden="true"><img src="https://raw.githubusercontent.com/MilagrosPirona/recetas-carrusel/master/img/thumbail.jpg" alt="Cravings" width="1200" /></a>
+  <a href="https://cravings.netlify.app" aria-hidden="true"><img src="https://raw.githubusercontent.com/MilagrosPirona/recetas-carrusel/master/img/tumbail%20.jpg" alt="Cravings" width="1200" /></a>
 </h1>
 
 Un simple carrusel de imagenes donde se pueden apreciar varios tipos de postres los cuales muestra sus ingredientes en el reverso de la imagen y los pasos de las recetas en un PopUp que sale cuando se presiona "Leer Mas".
